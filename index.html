@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valeria Correa Isaza — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080c12;
+    --surface: #0d1420;
+    --border: #1a2535;
+    --cyan: #00d4e8;
+    --red: #e84040;
+    --text: #c8d8e8;
+    --muted: #5a7080;
+    --white: #f0f6ff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 60px 80px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--cyan), transparent 60%);
+  }
+
+  .header-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--cyan);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .header-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 52px;
+    font-weight: 300;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .header-name span { font-weight: 600; }
+
+  .header-role {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    margin-bottom: 32px;
+  }
+
+  .header-bio {
+    max-width: 560px;
+    font-size: 16px;
+    color: var(--text);
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  .header-links { display: flex; gap: 24px; flex-wrap: wrap; }
+
+  .header-links a {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--cyan);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .header-links a:hover { border-color: var(--cyan); }
+
+  .lang-tags {
+    position: absolute;
+    top: 60px; right: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-end;
+  }
+
+  .lang-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .lang-tag.active { border-color: var(--cyan); color: var(--cyan); }
+
+  main { max-width: 1100px; margin: 0 auto; padding: 0 80px 100px; }
+
+  .section { padding: 70px 0; border-bottom: 1px solid var(--border); }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--cyan);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .case-title {
+    font-size: 42px;
+    font-weight: 300;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+
+  .case-subtitle {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--red);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .case-intro {
+    font-size: 17px;
+    line-height: 1.75;
+    max-width: 680px;
+    color: var(--text);
+    margin-bottom: 48px;
+  }
+
+  .img-full {
+    width: 100%;
+    border: 1px solid var(--border);
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .img-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .img-grid img {
+    width: 100%;
+    display: block;
+    border: 1px solid var(--border);
+    object-fit: cover;
+  }
+
+  .img-caption {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 48px;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+
+  .col-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--cyan);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .col-text { font-size: 14px; color: var(--text); line-height: 1.7; }
+
+  .pipeline {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .pipe-step {
+    flex: 1;
+    min-width: 120px;
+    border: 1px solid var(--border);
+    border-right: none;
+    padding: 16px 14px;
+    position: relative;
+  }
+
+  .pipe-step:last-child { border-right: 1px solid var(--border); }
+
+  .pipe-step::after {
+    content: '→';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--cyan);
+    font-size: 12px;
+    z-index: 1;
+  }
+
+  .pipe-step:last-child::after { display: none; }
+
+  .pipe-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    color: var(--red);
+    letter-spacing: 0.15em;
+    margin-bottom: 6px;
+  }
+
+  .pipe-name {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .pipe-tools { font-size: 10px; color: var(--muted); }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
+
+  .tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .tag.highlight { border-color: var(--cyan); color: var(--cyan); }
+
+  .role-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--cyan);
+    padding: 28px 32px;
+    margin-bottom: 32px;
+  }
+
+  .role-block h3 {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--cyan);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .role-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+  .role-list li {
+    font-size: 14px;
+    color: var(--text);
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .role-list li::before { content: '—'; position: absolute; left: 0; color: var(--red); }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 32px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .exp-item:last-child { border-bottom: none; }
+  .exp-meta { font-family: 'Space Mono', monospace; }
+  .exp-company { font-size: 11px; color: var(--white); letter-spacing: 0.05em; margin-bottom: 4px; }
+  .exp-date { font-size: 10px; color: var(--muted); letter-spacing: 0.1em; }
+  .exp-desc { font-size: 14px; color: var(--text); line-height: 1.65; }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+
+  .skill-cell { background: var(--bg); padding: 20px 24px; }
+
+  .skill-cell-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--cyan);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .skill-cell-items { font-size: 13px; color: var(--text); line-height: 1.7; }
+
+  .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+  .contact-item { border: 1px solid var(--border); padding: 20px 24px; }
+
+  .contact-item-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .contact-item-value { font-size: 13px; color: var(--cyan); word-break: break-all; }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-left, .footer-right {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  @media (max-width: 768px) {
+    header, main, footer { padding-left: 24px; padding-right: 24px; }
+    .lang-tags { display: none; }
+    .header-name { font-size: 36px; }
+    .two-col, .img-grid, .skills-grid, .contact-grid { grid-template-columns: 1fr; }
+    .pipeline { flex-direction: column; }
+    .pipe-step { border-right: 1px solid var(--border); border-bottom: none; }
+    .pipe-step:last-child { border-bottom: 1px solid var(--border); }
+    .pipe-step::after { content: '↓'; right: auto; left: 50%; top: auto; bottom: -10px; transform: translateX(-50%); }
+    .exp-item { grid-template-columns: 1fr; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="lang-tags">
+    <div class="lang-tag active">ES — Native</div>
+    <div class="lang-tag active">EN — Advanced</div>
+    <div class="lang-tag active">DE — Advanced</div>
+    <div class="lang-tag">PT — Basic</div>
+  </div>
+  <div class="header-eyebrow">Portfolio · 2026</div>
+  <h1 class="header-name">Valeria<br><span>Correa Isaza</span></h1>
+  <div class="header-role">UX Researcher · Experiential Designer · Creative Technologist</div>
+  <p class="header-bio">Design and Business Administration student at Universidad de los Andes, Bogotá. I work at the intersection of experience design, interactive art, and human-computer interaction — translating complex technical systems into perceptible, questionable human experiences.</p>
+  <div class="header-links">
+    <a href="mailto:valeria.correaisaza@gmail.com">valeria.correaisaza@gmail.com</a>
+    <a href="https://www.linkedin.com/in/valeria-correa-isaza-a8b756295/" target="_blank">LinkedIn</a>
+    <a href="tel:+573165310114">+57 316 531 0114</a>
+  </div>
+</header>
+
+<main>
+  <section class="section">
+    <div class="section-label">Featured Project</div>
+    <div class="case-title">Centinela</div>
+    <div class="case-subtitle">Interactive Installation · Algorithmic Discrimination · 2026</div>
+    <p class="case-intro">An interactive art installation that makes algorithmic bias visible and embodied. Using computer vision, Centinela silently classifies visitors by physical characteristics — projecting satirical labels in real time — then invites them behind the curtain to understand and interrogate the system that just judged them.</p>
+
+    <img class="img-full" src="centinela_doc.jpeg" alt="Centinela methodology document">
+    <div class="img-caption">[ 00 ] — CENTINELA V2.0 · SEMILLERO DE COMPUTACIÓN CREATIVA · UNIVERSIDAD DE LOS ANDES · 2026</div>
+
+    <div class="img-grid">
+      <img src="classification_screenshot.png" alt="Centinela classification system in action">
+      <img src="td_screenshot.png" alt="TouchDesigner pipeline">
+    </div>
+    <div class="img-caption">[ 01 ] — CLASSIFICATION PIPELINE IN ACTION (LEFT) · TOUCHDESIGNER NODE NETWORK (RIGHT)</div>
+
+    <div class="role-block">
+      <h3>My Role</h3>
+      <ul class="role-list">
+        <li>Visual and experiential design of the installation — spatial logic, aesthetic language, visitor journey from Side A (unaware) to Side B (revealed)</li>
+        <li>UX research through structured observation of visitor reactions and behavioral patterns</li>
+        <li>Visual communication design of the technical pipeline for Side B's public-facing display</li>
+        <li>Documentation and materials for external festival submissions and funding applications</li>
+      </ul>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="col-label">Side A — Silent Classification</div>
+        <p class="col-text">Visitors enter without knowing they're being observed. A camera captures them; the system extracts physical features and generates real-time classifications: bounding boxes, satirical labels, glitch visuals. They only see the output — never the process that produced it.</p>
+      </div>
+      <div>
+        <div class="col-label">Side B — Revealed System</div>
+        <p class="col-text">Crossing a fabric divide, visitors enter the machine. An interactive panel lets them explore and modify the system's parameters. What was opaque becomes legible — what was a result now has a process, and that process can be questioned.</p>
+      </div>
+    </div>
+
+    <div class="col-label">Technical Pipeline</div>
+    <div class="pipeline">
+      <div class="pipe-step"><div class="pipe-num">01</div><div class="pipe-name">Capture</div><div class="pipe-tools">Webcam · Processing</div></div>
+      <div class="pipe-step"><div class="pipe-num">02</div><div class="pipe-name">Detection</div><div class="pipe-tools">Python · MediaPipe · OpenCV</div></div>
+      <div class="pipe-step"><div class="pipe-num">03</div><div class="pipe-name">Extraction</div><div class="pipe-tools">Body landmarks · Physical features</div></div>
+      <div class="pipe-step"><div class="pipe-num">04</div><div class="pipe-name">Classification</div><div class="pipe-tools">Height · Clothing color · Glasses</div></div>
+      <div class="pipe-step"><div class="pipe-num">05</div><div class="pipe-name">Generation</div><div class="pipe-tools">TouchDesigner · Real-time viz</div></div>
+      <div class="pipe-step"><div class="pipe-num">06</div><div class="pipe-name">Projection</div><div class="pipe-tools">2 surfaces · No biometric storage</div></div>
+    </div>
+
+    <div class="tags">
+      <span class="tag highlight">UX Research</span>
+      <span class="tag highlight">Experiential Design</span>
+      <span class="tag highlight">Interactive Installation</span>
+      <span class="tag">TouchDesigner</span>
+      <span class="tag">Processing</span>
+      <span class="tag">Python</span>
+      <span class="tag">MediaPipe</span>
+      <span class="tag">OpenCV</span>
+      <span class="tag">AI Ethics</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Experience</div>
+    <div class="exp-item">
+      <div class="exp-meta"><div class="exp-company">Mrs. Lovegood</div><div class="exp-date">2024</div></div>
+      <div class="exp-desc">Supported a textile and interior design brand across a 6-month placement and Feria Vassar. Managed client relationships, product presentation, and stand curation — communicating a strong design vision clearly to diverse audiences.</div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta"><div class="exp-company">Easy People</div><div class="exp-date">2024</div></div>
+      <div class="exp-desc">Contributed to the brand experience of a sustainable fashion label at Feria EVA: sales, stand design, and community engagement. Connected with the brand's traceability and community-building values from day one.</div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-meta"><div class="exp-company">Kajuyalí</div><div class="exp-date">2022–2024</div></div>
+      <div class="exp-desc">Led emotional support and group management in experiential education programs. Built strong facilitation skills and learned to navigate high-stakes interpersonal environments — work that directly informs my approach to user observation and human-centered research.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Skills & Tools</div>
+    <div class="skills-grid">
+      <div class="skill-cell"><div class="skill-cell-label">Design</div><div class="skill-cell-items">Adobe Illustrator<br>Photoshop<br>InDesign<br>Visual communication</div></div>
+      <div class="skill-cell"><div class="skill-cell-label">UX Research</div><div class="skill-cell-items">Structured observation<br>Behavioral analysis<br>Documentation<br>User journey mapping</div></div>
+      <div class="skill-cell"><div class="skill-cell-label">Creative Tech</div><div class="skill-cell-items">TouchDesigner<br>Processing<br>Python<br>MediaPipe / OpenCV</div></div>
+      <div class="skill-cell"><div class="skill-cell-label">Business</div><div class="skill-cell-items">Strategic communication<br>Project documentation<br>Grant writing<br>Brand experience</div></div>
+      <div class="skill-cell"><div class="skill-cell-label">Languages</div><div class="skill-cell-items">Spanish — Native<br>English — Advanced<br>German — Advanced<br>Portuguese — Basic</div></div>
+      <div class="skill-cell"><div class="skill-cell-label">Education</div><div class="skill-cell-items">Design + Business Admin<br>Universidad de los Andes<br>Bogotá, Colombia<br>Expected 2028</div></div>
+    </div>
+  </section>
+
+  <section class="section" style="border-bottom: none;">
+    <div class="section-label">Contact</div>
+    <div class="contact-grid">
+      <div class="contact-item"><div class="contact-item-label">Email</div><div class="contact-item-value">valeria.correaisaza@gmail.com</div></div>
+      <div class="contact-item"><div class="contact-item-label">LinkedIn</div><div class="contact-item-value">linkedin.com/in/valeria-correa-isaza-a8b756295</div></div>
+      <div class="contact-item"><div class="contact-item-label">Phone</div><div class="contact-item-value">+57 316 531 0114<br>Bogotá, Colombia</div></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-left">VALERIA CORREA ISAZA · PORTFOLIO 2026</div>
+  <div class="footer-right">BOGOTÁ, COLOMBIA · OPEN TO REMOTE WORK</div>
+</footer>
+
+</body>
+</html>
